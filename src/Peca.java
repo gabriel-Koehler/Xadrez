@@ -5,6 +5,17 @@ public abstract class Peca {
     private String cor;
     private Posicao posicao;
 
+    public boolean verificaPeca(Posicao posicao,ArrayList<Posicao> possiveisMovimentos){
+        if (posicao.getPeca()==null){
+            possiveisMovimentos.add(posicao);
+            return false;
+        }else if (!posicao.getPeca().getCor().equals(this.getCor())) {
+                possiveisMovimentos.add(posicao);
+
+        }
+            return true;
+    }
+
     public void mover(Tabuleiro tabuleiro,
                       Posicao posicao){
         ArrayList<Posicao> possiveisPosicoes = possiveisMovimentos(tabuleiro);
@@ -22,6 +33,10 @@ public abstract class Peca {
             this.posicao=posicao;
     }
     public abstract ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro);
+
+    public String getCor() {
+        return cor;
+    }
 
     public Posicao getPosicao() {
         return posicao;

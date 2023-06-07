@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Tabuleiro {
-    private Posicao[][] posicoes=new Posicao[8][8];
+    private ArrayList<Posicao> posicoes=new ArrayList<>();
 
-    public Posicao[][] getPosicoes() {
+    public ArrayList<Posicao> getPosicoes() {
         return posicoes;
     }
 
