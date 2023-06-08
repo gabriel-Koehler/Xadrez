@@ -11,7 +11,6 @@ public abstract class Peca {
             return false;
         }else if (!posicao.getPeca().getCor().equals(this.getCor())) {
                 possiveisMovimentos.add(posicao);
-
         }
             return true;
     }
