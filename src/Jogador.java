@@ -8,6 +8,7 @@ public class Jogador {
     private ArrayList<Peca> pecas = new ArrayList<>();
 
     public boolean moverPeca(Peca peca, Posicao posicao){
+
         return true;
     }
     public void desistir(){

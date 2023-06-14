@@ -1,6 +1,10 @@
 import java.util.ArrayList;
 
 public class Cavalo extends Peca {
+
+    Cavalo(String cor){
+        super(cor);
+    }
     @Override
     public ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro) {
         ArrayList<Posicao> possiveisMovimentos=new ArrayList<>();
@@ -22,7 +26,7 @@ public class Cavalo extends Peca {
                     indice== posicaoNoTabuleiro+17 ){
 
                 //                coluna H
-                if ((posicaoNoTabuleiro+1)%8 ==0 && !(
+                if (validaExtremidade(posicaoNoTabuleiro+1) && !(
                         indice==posicaoNoTabuleiro-15 ||
                                 indice==posicaoNoTabuleiro-6 ||
                                 indice==posicaoNoTabuleiro+10 ||
@@ -32,7 +36,7 @@ public class Cavalo extends Peca {
 
                 }
                 //    coluna A
-                else if ((posicaoNoTabuleiro)%8==0 && !(
+                else if (validaExtremidade(posicaoNoTabuleiro) && !(
                         indice==posicaoNoTabuleiro-17 ||
                                 indice==posicaoNoTabuleiro-10 ||
                                 indice==posicaoNoTabuleiro+6 ||
@@ -41,14 +45,14 @@ public class Cavalo extends Peca {
                     verificaPeca(posicao,possiveisMovimentos);
                 }
 //                coluna B
-                else if ((posicaoNoTabuleiro-1)%8==0 && !(
+                else if (validaExtremidade(posicaoNoTabuleiro-1) && !(
                                 indice==posicaoNoTabuleiro-10 ||
                                 indice==posicaoNoTabuleiro+6
                 )){
                     verificaPeca(posicao,possiveisMovimentos);
                 }
 //                coluna G
-                else if ((posicaoNoTabuleiro+2)%8==0 && !(
+                else if (validaExtremidade(posicaoNoTabuleiro-2) && !(
                         indice==posicaoNoTabuleiro-15 ||
                                 indice==posicaoNoTabuleiro+17
                 )){
