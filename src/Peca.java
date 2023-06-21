@@ -19,7 +19,7 @@ public abstract class Peca {
             return true;
     }
 
-    public void mover(Tabuleiro tabuleiro,
+    public boolean mover(Tabuleiro tabuleiro,
                       Posicao posicao){
         ArrayList<Posicao> possiveisPosicoes = possiveisMovimentos(tabuleiro);
         for (Posicao possicaoPossivel: possiveisPosicoes) {
@@ -30,10 +30,10 @@ public abstract class Peca {
                 this.posicao.setPeca(null);
                 //trocando a posicao atual da peca no tabuleiro
                 this.posicao=posicao;
-                break;
+                return true;
             }
         }
-            this.posicao=posicao;
+            return false;
     }
 
     public boolean validaExtremidade(int posicaoNoTabuleiro){
