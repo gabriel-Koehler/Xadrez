@@ -55,7 +55,11 @@ public class Bispo extends  Peca{
         return possiveisMovimentos;
     }
 
-//        for (int i = 0; i < tabuleiro.getPosicoes().size(); i) {
+    @Override
+    public String toString() {
+        return "Bispo "+super.toString();
+    }
+    //        for (int i = 0; i < tabuleiro.getPosicoes().size(); i) {
 //
 //        }
 

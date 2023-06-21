@@ -5,20 +5,22 @@ public class Jogador {
     private String senha;
     private String cor;
     private double points;
-    private ArrayList<Peca> pecas = new ArrayList<>();
+    private ArrayList<Peca> pecas;
 
     Jogador(String nome, String senha){
         this.nome=nome;
         this.senha=senha;
+        this.pecas = new ArrayList<>();
     }
 
     public void setCor(String cor,Tabuleiro tabuleiro) {
         this.cor = cor;
         for (Posicao posicao:tabuleiro.getPosicoes()) {
-            if(posicao.getPeca().getCor().equals(this.getCor())){
+            if(posicao.getPeca()!=null &&
+            posicao.getPeca().getCor().equals(this.getCor())
+                ){
                 adicionarPeçaAJogador(posicao.getPeca());
             }
-
         }
     }
 

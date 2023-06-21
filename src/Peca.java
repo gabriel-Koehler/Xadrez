@@ -50,4 +50,11 @@ public abstract class Peca {
         return posicao;
     }
     //icone
+
+    @Override
+    public String toString() {
+        return
+                "cor:" + cor + "\n" +
+                "posicao=" + posicao;
+    }
 }

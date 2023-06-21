@@ -14,8 +14,13 @@ public class Executavel {
 
         //escolha da peca
         System.out.println(jogador1.getPecas());
+        for (Peca peca : jogador1.getPecas()){
+            System.out.println(jogador1.getPecas().indexOf(peca)+(1)+" "+peca);
+        }
         int escolhaPeca = sc.nextInt();
+        System.out.println(escolhaPeca);
         Peca peca=jogador1.getPecas().get(escolhaPeca);
+        System.out.println(peca);
         //escolha da posicao para movimento
         ArrayList<Posicao> posicoes = peca.possiveisMovimentos(tabuleiro);
         System.out.println(posicoes);
