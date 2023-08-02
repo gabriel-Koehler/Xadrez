@@ -16,6 +16,8 @@ public class Cavalo extends Peca {
         for (Posicao posicao:
                 tabuleiro.getPosicoes()) {
             int indice=tabuleiro.getPosicoes().indexOf(posicao);
+
+
             if (tabuleiro.getPosicoes().indexOf(posicao)== posicaoNoTabuleiro-17 ||
                     indice== posicaoNoTabuleiro-15 ||
                     indice== posicaoNoTabuleiro-10 ||
@@ -24,44 +26,53 @@ public class Cavalo extends Peca {
                     indice== posicaoNoTabuleiro+10 ||
                     indice== posicaoNoTabuleiro+15 ||
                     indice== posicaoNoTabuleiro+17 ){
-
+                System.out.println(indice);
                 //                coluna A
-                if (validaExtremidade(posicaoNoTabuleiro+1) && !(
-                        indice==posicaoNoTabuleiro-15 ||
-                                indice==posicaoNoTabuleiro-6 ||
-                                indice==posicaoNoTabuleiro+10 ||
-                                indice==posicaoNoTabuleiro+17
-                        )){
-                    System.out.println("-10");
+                if (!(
+                        indice==posicaoNoTabuleiro+15 ||
+                                indice==posicaoNoTabuleiro+6 ||
+                                indice==posicaoNoTabuleiro-10 ||
+                                indice==posicaoNoTabuleiro-17
+                        )&& this.validaExtremidade(posicaoNoTabuleiro+1)){
+                    System.out.println(indice+"A");
                     verificaPeca(posicao,possiveisMovimentos);
 
                 }
-                //    coluna H
-                else if (validaExtremidade(posicaoNoTabuleiro) && !(
-                        indice==posicaoNoTabuleiro-17 ||
-                                indice==posicaoNoTabuleiro-10 ||
-                                indice==posicaoNoTabuleiro+6 ||
-                                indice==posicaoNoTabuleiro+15
-                        )){
-                    System.out.println("+6");
+//                coluna B
+                else if (
+                                indice==posicaoNoTabuleiro-15||
+                                indice==posicaoNoTabuleiro+15||
+                                indice==posicaoNoTabuleiro+17||
+                                indice==posicaoNoTabuleiro-17||
+                                indice==posicaoNoTabuleiro+10||
+                                indice==posicaoNoTabuleiro-6 &&
+                this.validaExtremidade(posicaoNoTabuleiro-1)
+                ){
+                    System.out.println(indice+"B");
                     verificaPeca(posicao,possiveisMovimentos);
                 }
 //                coluna G
-                else if (validaExtremidade(posicaoNoTabuleiro-1) && !(
-                                indice==posicaoNoTabuleiro-10 ||
-                                indice==posicaoNoTabuleiro+6
-                )){
-                    System.out.println("-10");
+                 else if (
+                                indice==posicaoNoTabuleiro-15 ||
+                                indice==posicaoNoTabuleiro+15||
+                                indice==posicaoNoTabuleiro+17||
+                                indice==posicaoNoTabuleiro-17||
+                                indice==posicaoNoTabuleiro-10||
+                                indice==posicaoNoTabuleiro+6 &&
+                this.validaExtremidade(posicaoNoTabuleiro+2)
+                ){
+                    System.out.println(indice+"G");
                     verificaPeca(posicao,possiveisMovimentos);
                 }
-//                coluna B
-                else if (validaExtremidade(posicaoNoTabuleiro-2) && !(
-                        indice==posicaoNoTabuleiro-15 ||
-                                indice==posicaoNoTabuleiro+17
-                )){
-                    System.out.println("-15");
+                //    coluna H
+                else if (!(
+                        indice==posicaoNoTabuleiro+17 ||
+                                indice==posicaoNoTabuleiro+10 ||
+                                indice==posicaoNoTabuleiro-6 ||
+                                indice==posicaoNoTabuleiro-15
+                        )&& this.validaExtremidade(posicaoNoTabuleiro)){
+                    System.out.println(indice+"H");
                     verificaPeca(posicao,possiveisMovimentos);
-                    possiveisMovimentos.add(posicao);
                 }
 
             }

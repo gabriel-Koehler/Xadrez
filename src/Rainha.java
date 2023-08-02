@@ -42,6 +42,7 @@ public class Rainha extends Peca {
         ){
             break;
         }
+        //possivel bug nos if's
     }
 
         for(int i=(validaExtremidade(posicaoNoTabuleiro) ? -1 : posicaoNoTabuleiro-1);
@@ -56,8 +57,8 @@ public class Rainha extends Peca {
         for(int i=(validaExtremidade(posicaoNoTabuleiro) ? 64 : posicaoNoTabuleiro+7);
             i<tabuleiro.getPosicoes().size();i+=7) {
 
-            if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)
-                    || validaExtremidade(i)){
+            if (validaExtremidade(i)
+                    || verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)){
                 break;
             }
         }
@@ -65,8 +66,8 @@ public class Rainha extends Peca {
         for(int i=(validaExtremidade(posicaoNoTabuleiro+1)? -1 : posicaoNoTabuleiro-7);
             i>=0;i-=7) {
 
-            if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)
-                    || validaExtremidade(i+1)){
+            if (validaExtremidade(i+1)
+                    || verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)){
                 break;
             }
         }
@@ -74,8 +75,8 @@ public class Rainha extends Peca {
         for(int i=(validaExtremidade(posicaoNoTabuleiro+1) ? 64 : posicaoNoTabuleiro+9);
             i<tabuleiro.getPosicoes().size();i+=9) {
 
-            if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)
-                    || validaExtremidade(+1)){
+            if (validaExtremidade(+1)
+                    || verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)){
                 break;
             }
         }
@@ -83,8 +84,8 @@ public class Rainha extends Peca {
         for(int i=(validaExtremidade(posicaoNoTabuleiro) ? -1 : posicaoNoTabuleiro-9);
             i>=0;i-=9) {
 
-            if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)
-                    || validaExtremidade(i)){
+            if (validaExtremidade(i)
+                    || verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)){
                 break;
             }
         }

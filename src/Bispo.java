@@ -38,7 +38,7 @@ public class Bispo extends  Peca{
                 i<tabuleiro.getPosicoes().size();i+=9) {
 
             if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)
-                || validaExtremidade(+1)){
+                || validaExtremidade(i+1)){
                 break;
             }
         }
