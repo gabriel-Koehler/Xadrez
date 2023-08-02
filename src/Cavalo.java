@@ -25,7 +25,7 @@ public class Cavalo extends Peca {
                     indice== posicaoNoTabuleiro+15 ||
                     indice== posicaoNoTabuleiro+17 ){
 
-                //                coluna H
+                //                coluna A
                 if (validaExtremidade(posicaoNoTabuleiro+1) && !(
                         indice==posicaoNoTabuleiro-15 ||
                                 indice==posicaoNoTabuleiro-6 ||
@@ -36,7 +36,7 @@ public class Cavalo extends Peca {
                     verificaPeca(posicao,possiveisMovimentos);
 
                 }
-                //    coluna A
+                //    coluna H
                 else if (validaExtremidade(posicaoNoTabuleiro) && !(
                         indice==posicaoNoTabuleiro-17 ||
                                 indice==posicaoNoTabuleiro-10 ||
@@ -46,7 +46,7 @@ public class Cavalo extends Peca {
                     System.out.println("+6");
                     verificaPeca(posicao,possiveisMovimentos);
                 }
-//                coluna B
+//                coluna G
                 else if (validaExtremidade(posicaoNoTabuleiro-1) && !(
                                 indice==posicaoNoTabuleiro-10 ||
                                 indice==posicaoNoTabuleiro+6
@@ -54,7 +54,7 @@ public class Cavalo extends Peca {
                     System.out.println("-10");
                     verificaPeca(posicao,possiveisMovimentos);
                 }
-//                coluna G
+//                coluna B
                 else if (validaExtremidade(posicaoNoTabuleiro-2) && !(
                         indice==posicaoNoTabuleiro-15 ||
                                 indice==posicaoNoTabuleiro+17
