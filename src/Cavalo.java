@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Cavalo extends Peca {
 
-    Cavalo(String cor){
-        super(cor);
+    Cavalo(String cor,Posicao posicao){
+        super(cor,posicao);
     }
     @Override
     public ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro) {
@@ -32,6 +32,7 @@ public class Cavalo extends Peca {
                                 indice==posicaoNoTabuleiro+10 ||
                                 indice==posicaoNoTabuleiro+17
                         )){
+                    System.out.println("-10");
                     verificaPeca(posicao,possiveisMovimentos);
 
                 }
@@ -42,6 +43,7 @@ public class Cavalo extends Peca {
                                 indice==posicaoNoTabuleiro+6 ||
                                 indice==posicaoNoTabuleiro+15
                         )){
+                    System.out.println("+6");
                     verificaPeca(posicao,possiveisMovimentos);
                 }
 //                coluna B
@@ -49,6 +51,7 @@ public class Cavalo extends Peca {
                                 indice==posicaoNoTabuleiro-10 ||
                                 indice==posicaoNoTabuleiro+6
                 )){
+                    System.out.println("-10");
                     verificaPeca(posicao,possiveisMovimentos);
                 }
 //                coluna G
@@ -56,6 +59,7 @@ public class Cavalo extends Peca {
                         indice==posicaoNoTabuleiro-15 ||
                                 indice==posicaoNoTabuleiro+17
                 )){
+                    System.out.println("-15");
                     verificaPeca(posicao,possiveisMovimentos);
                     possiveisMovimentos.add(posicao);
                 }
@@ -67,6 +71,10 @@ public class Cavalo extends Peca {
     }
     @Override
     public String toString() {
-        return "Cavalo "+super.toString();
+        if(this.getCor().equals("Branco")){
+            return "♘";
+        }else{
+            return "♞";
+        }
     }
 }

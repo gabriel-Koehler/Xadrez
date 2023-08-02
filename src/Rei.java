@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class Rei extends Peca{
     private boolean primeiroMovimento= true;
 
-    Rei(String cor){
-        super(cor);
+    Rei(String cor,Posicao posicao){
+        super(cor,posicao);
     }
     @Override
     public ArrayList<Posicao> possiveisMovimentos(Tabuleiro tabuleiro) {
@@ -47,6 +47,10 @@ public class Rei extends Peca{
     }
     @Override
     public String toString() {
-        return "Rei "+super.toString();
+        if(this.getCor().equals("Branco")){
+            return "♔";
+        }else{
+            return "♚";
+        }
     }
 }

@@ -5,8 +5,9 @@ public abstract class Peca {
     private String cor;
     private Posicao posicao;
 
-    Peca(String cor){
+    Peca(String cor,Posicao posicao){
         this.cor=cor;
+        this.posicao=posicao;
     }
 
     public boolean verificaPeca(Posicao posicao,ArrayList<Posicao> possiveisMovimentos){
@@ -53,6 +54,7 @@ public abstract class Peca {
 
     @Override
     public String toString() {
+
         return
                 "cor:" + cor + "\n" +
                 "posicao=" + posicao;
