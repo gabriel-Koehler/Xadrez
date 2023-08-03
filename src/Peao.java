@@ -24,12 +24,14 @@ public class Peao extends Peca{
                 if (posicoesTabuleiro.get(posicaoNoTabuleiro+16).getPeca()==null){
                     possiveisMovimentos.add(posicoesTabuleiro
                             .get(posicaoNoTabuleiro+16));
+
                 }
             }
             if (posicoesTabuleiro.get(posicaoNoTabuleiro+9).getPeca()!=null &&
                     posicoesTabuleiro.get(posicaoNoTabuleiro+9)
                     .getPeca().getCor().equals("Branco")
                     && !validaExtremidade(posicaoNoTabuleiro+1)){
+                System.out.println("sim tem ataques");
                 possiveisMovimentos.add(posicoesTabuleiro
                         .get(posicaoNoTabuleiro+9));
             }
@@ -37,6 +39,7 @@ public class Peao extends Peca{
                     posicoesTabuleiro.get(posicaoNoTabuleiro+7)
                     .getPeca().getCor().equals("Branco")
                     && !validaExtremidade(posicaoNoTabuleiro)){
+                System.out.println("sim tem ataques");
                 possiveisMovimentos.add(posicoesTabuleiro
                         .get(posicaoNoTabuleiro+7));
             }
@@ -51,19 +54,22 @@ public class Peao extends Peca{
                     if (tabuleiro.getPosicoes().get(posicaoNoTabuleiro-16).getPeca()==null){
                         possiveisMovimentos.add(posicoesTabuleiro
                                 .get(posicaoNoTabuleiro-16));
+
                     }
                 }
             if (posicoesTabuleiro.get(posicaoNoTabuleiro-9).getPeca()!=null &&
                     posicoesTabuleiro.get(posicaoNoTabuleiro-9)
                     .getPeca().getCor().equals("Preto")
-                    && !validaExtremidade(posicaoNoTabuleiro+1)){
+                    && !validaExtremidade(posicaoNoTabuleiro)){
+                System.out.println("sim tem ataques");
                 possiveisMovimentos.add(posicoesTabuleiro
                         .get(posicaoNoTabuleiro-9));
             }
             if (posicoesTabuleiro.get(posicaoNoTabuleiro-7).getPeca()!=null &&
                     posicoesTabuleiro.get(posicaoNoTabuleiro-7)
                     .getPeca().getCor().equals("Preto")
-                    && !validaExtremidade(posicaoNoTabuleiro)){
+                    && !validaExtremidade(posicaoNoTabuleiro+1)){
+                System.out.println("sim tem ataques");
                 possiveisMovimentos.add(posicoesTabuleiro
                         .get(posicaoNoTabuleiro-7));
             }
@@ -78,5 +84,13 @@ public class Peao extends Peca{
         }else{
             return "♟";
         }
+    }
+
+    public boolean isPrimeiroMovimento() {
+        return primeiroMovimento;
+    }
+
+    public void setPrimeiroMovimento(boolean primeiroMovimento) {
+        this.primeiroMovimento = primeiroMovimento;
     }
 }

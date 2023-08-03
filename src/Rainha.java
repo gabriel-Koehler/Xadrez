@@ -57,8 +57,8 @@ public class Rainha extends Peca {
         for(int i=(validaExtremidade(posicaoNoTabuleiro) ? 64 : posicaoNoTabuleiro+7);
             i<tabuleiro.getPosicoes().size();i+=7) {
 
-            if (validaExtremidade(i)
-                    || verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)){
+            if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)
+                    || validaExtremidade(i)){
                 break;
             }
         }
@@ -66,8 +66,8 @@ public class Rainha extends Peca {
         for(int i=(validaExtremidade(posicaoNoTabuleiro+1)? -1 : posicaoNoTabuleiro-7);
             i>=0;i-=7) {
 
-            if (validaExtremidade(i+1)
-                    || verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)){
+            if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)
+               || validaExtremidade(i+1)){
                 break;
             }
         }
@@ -75,8 +75,9 @@ public class Rainha extends Peca {
         for(int i=(validaExtremidade(posicaoNoTabuleiro+1) ? 64 : posicaoNoTabuleiro+9);
             i<tabuleiro.getPosicoes().size();i+=9) {
 
-            if (validaExtremidade(+1)
-                    || verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)){
+            if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)
+                || validaExtremidade(+1)){
+
                 break;
             }
         }
@@ -84,8 +85,8 @@ public class Rainha extends Peca {
         for(int i=(validaExtremidade(posicaoNoTabuleiro) ? -1 : posicaoNoTabuleiro-9);
             i>=0;i-=9) {
 
-            if (validaExtremidade(i)
-                    || verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)){
+            if (verificaPeca(tabuleiro.getPosicoes().get(i),possiveisMovimentos)
+                || validaExtremidade(i)){
                 break;
             }
         }

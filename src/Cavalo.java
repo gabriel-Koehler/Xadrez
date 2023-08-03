@@ -18,7 +18,7 @@ public class Cavalo extends Peca {
             int indice=tabuleiro.getPosicoes().indexOf(posicao);
 
 
-            if (tabuleiro.getPosicoes().indexOf(posicao)== posicaoNoTabuleiro-17 ||
+            if (indice== posicaoNoTabuleiro-17 ||
                     indice== posicaoNoTabuleiro-15 ||
                     indice== posicaoNoTabuleiro-10 ||
                     indice== posicaoNoTabuleiro-6 ||
@@ -28,51 +28,59 @@ public class Cavalo extends Peca {
                     indice== posicaoNoTabuleiro+17 ){
                 System.out.println(indice);
                 //                coluna A
-                if (!(
+                if (this.validaExtremidade(posicaoNoTabuleiro)){
+                    if(!(
                         indice==posicaoNoTabuleiro+15 ||
-                                indice==posicaoNoTabuleiro+6 ||
-                                indice==posicaoNoTabuleiro-10 ||
-                                indice==posicaoNoTabuleiro-17
-                        )&& this.validaExtremidade(posicaoNoTabuleiro+1)){
-                    System.out.println(indice+"A");
-                    verificaPeca(posicao,possiveisMovimentos);
+                        indice==posicaoNoTabuleiro+6 ||
+                        indice==posicaoNoTabuleiro-10 ||
+                        indice==posicaoNoTabuleiro-17
+                        )
+                    ){
+                        System.out.println(indice+"A");
+                        verificaPeca(posicao,possiveisMovimentos);
+                    }
 
                 }
 //                coluna B
-                else if (
-                                indice==posicaoNoTabuleiro-15||
-                                indice==posicaoNoTabuleiro+15||
-                                indice==posicaoNoTabuleiro+17||
-                                indice==posicaoNoTabuleiro-17||
-                                indice==posicaoNoTabuleiro+10||
-                                indice==posicaoNoTabuleiro-6 &&
-                this.validaExtremidade(posicaoNoTabuleiro-1)
-                ){
-                    System.out.println(indice+"B");
-                    verificaPeca(posicao,possiveisMovimentos);
+                else if (this.validaExtremidade(posicaoNoTabuleiro-1)){
+                    if(     indice==posicaoNoTabuleiro-15||
+                            indice==posicaoNoTabuleiro+15||
+                            indice==posicaoNoTabuleiro+17||
+                            indice==posicaoNoTabuleiro-17||
+                            indice==posicaoNoTabuleiro+10||
+                            indice==posicaoNoTabuleiro-6
+                    ){
+                        System.out.println(indice+"B");
+                        verificaPeca(posicao,possiveisMovimentos);
+                    }
                 }
 //                coluna G
-                 else if (
-                                indice==posicaoNoTabuleiro-15 ||
-                                indice==posicaoNoTabuleiro+15||
-                                indice==posicaoNoTabuleiro+17||
-                                indice==posicaoNoTabuleiro-17||
-                                indice==posicaoNoTabuleiro-10||
-                                indice==posicaoNoTabuleiro+6 &&
-                this.validaExtremidade(posicaoNoTabuleiro+2)
-                ){
-                    System.out.println(indice+"G");
-                    verificaPeca(posicao,possiveisMovimentos);
+                 else if (this.validaExtremidade(posicaoNoTabuleiro+2)){
+                     if(    indice==posicaoNoTabuleiro-15 ||
+                            indice==posicaoNoTabuleiro+15||
+                            indice==posicaoNoTabuleiro+17||
+                            indice==posicaoNoTabuleiro-17||
+                            indice==posicaoNoTabuleiro-10||
+                            indice==posicaoNoTabuleiro+6){
+                        System.out.println(indice+"G");
+                        verificaPeca(posicao,possiveisMovimentos);
+                     }
                 }
                 //    coluna H
-                else if (!(
-                        indice==posicaoNoTabuleiro+17 ||
-                                indice==posicaoNoTabuleiro+10 ||
-                                indice==posicaoNoTabuleiro-6 ||
-                                indice==posicaoNoTabuleiro-15
-                        )&& this.validaExtremidade(posicaoNoTabuleiro)){
-                    System.out.println(indice+"H");
-                    verificaPeca(posicao,possiveisMovimentos);
+                else if (this.validaExtremidade(posicaoNoTabuleiro+1)){
+                    if(!(
+                            indice==posicaoNoTabuleiro+17 ||
+                            indice==posicaoNoTabuleiro+10 ||
+                            indice==posicaoNoTabuleiro-6 ||
+                            indice==posicaoNoTabuleiro-15
+                        )
+                    ){
+                        System.out.println(indice+"H");
+                        verificaPeca(posicao,possiveisMovimentos);
+                    }
+                }else {
+                        System.out.println(indice+"any");
+                        verificaPeca(posicao,possiveisMovimentos);
                 }
 
             }

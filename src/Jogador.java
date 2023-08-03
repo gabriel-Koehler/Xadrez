@@ -1,3 +1,4 @@
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
 
 public class Jogador {
@@ -35,11 +36,16 @@ public class Jogador {
                              Posicao posicao,
                              Tabuleiro tabuleiro,
                              Jogador adversario){
-
         Peca pecaAdversaria=posicao.getPeca();
         boolean valida=peca.mover(tabuleiro,posicao);
+        if(peca instanceof  Peao){
+            if(((Peao) peca).isPrimeiroMovimento()){
+                ((Peao) peca).setPrimeiroMovimento(false);
+            }
+        }
         if(pecaAdversaria!=null && valida){
-            adversario.pecas.remove(posicao.getPeca());
+            System.out.println(pecaAdversaria);
+            adversario.pecas.remove(pecaAdversaria);
         }
 
         return valida;

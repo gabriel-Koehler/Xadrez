@@ -20,39 +20,27 @@ public class Executavel {
 
             do {
             }while (displayJogada(jogador2,jogador1));
-//            System.out.println(getPecas(jogador1,tabuleiro) + "\n");
-//            mostrarTabuleiro();
-//            for (Peca peca : jogador1.getPecas()) {
-//                System.out.println(jogador1.getPecas().indexOf(peca) + (1) + " " + peca);
-//            }
-//            System.out.println("Escolha Uma Peça: ");
-//            int escolhaPeca = sc.nextInt();
-//            System.out.println(escolhaPeca);
-//            Peca peca = jogador1.getPecas().get(escolhaPeca - 1);
-//            System.out.println(peca);
-//            //escolha da posicao para movimento
-//            ArrayList<Posicao> posicoes = peca.possiveisMovimentos(tabuleiro);
-//            System.out.println(posicoes);
-//            int escolhaPosicao = sc.nextInt();
-//            Posicao posicao = posicoes.get(escolhaPosicao-1);
-//            // Movimentos da peca esccolhida para posicao desejada
-//            jogador1.moverPeca(peca, posicao, tabuleiro, jogador2);
-        }while (validarVitoria());
 
+        }while (validarVitoria());
+        if(!validarVitoria()){
+            System.out.println("O jogo Acabou");
+        }
 
     }
     private static boolean validarVitoria(){
+        boolean x=false;
+        boolean y=false;
         for (Peca peca:jogador1.getPecas()) {
             if (peca instanceof Rei){
-                return true;
+                x=true;
             }
         }
         for (Peca peca:jogador2.getPecas()) {
             if (peca instanceof Rei){
-                return true;
+                y=true;
             }
         }
-        return false;
+        return x==y;
     }
     private static void mostrarTabuleiro(){
         for (Posicao posicao: tabuleiro.getPosicoes() ) {
@@ -80,17 +68,7 @@ public class Executavel {
 
         }
     }
-//    private static ArrayList<Peca> getPecas(Jogador jogador,Tabuleiro tabuleiro){
-//        ArrayList<Peca> pecasJogador=new ArrayList<>();
-//        for (Posicao posicao: tabuleiro.getPosicoes()) {
-//            if(posicao.getPeca()!=null){
-//                if (posicao.getPeca().getCor().equals(jogador.getCor())) {
-//                    pecasJogador.add(posicao.getPeca());
-//                }
-//            }
-//        }
-//        return pecasJogador;
-//    }
+
     private static boolean displayJogada(Jogador jogador,Jogador adversario){
         System.out.println(jogador.getPecas() + "\n");
         mostrarTabuleiro();
