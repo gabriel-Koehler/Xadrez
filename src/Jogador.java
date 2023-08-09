@@ -38,7 +38,9 @@ public class Jogador {
                              Jogador adversario){
 
         Peca pecaAdversaria=posicao.getPeca();
-        boolean valida=peca.mover(tabuleiro,posicao);
+        boolean valida=peca.mover(tabuleiro,posicao,adversario);
+
+
 
         if(peca instanceof Peao){
             if(((Peao) peca).isPrimeiroMovimento()){

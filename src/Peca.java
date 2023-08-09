@@ -21,31 +21,54 @@ public abstract class Peca {
     }
 
     public boolean mover(Tabuleiro tabuleiro,
-                      Posicao posicao){
+                      Posicao posicao,Jogador adversario){
+
         ArrayList<Posicao> possiveisPosicoes = possiveisMovimentos(tabuleiro);
-        Posicao posicaoAntigaPeca=posicao;
-        Posicao antigaPeca=this.posicao;
+        Posicao posicaoAntiga=posicao;
+        Posicao posicaoAtualAntiga=this.posicao;
+        Peca pecaAntiga=posicao.getPeca();
+        Peca pecaAtualAntiga=this.posicao.getPeca();
+
         for (Posicao possicaoPossivel: possiveisPosicoes) {
             if(possicaoPossivel==posicao){
+
                 //atribuindo a peca para a nova posicao no tabuleiro
-                System.out.println("antiga "+posicaoAntigaPeca);
-                System.out.println("peça ataul "+antigaPeca);
+                System.out.println("peça antiga "+posicao.getPeca());
+                System.out.println("antiga "+posicaoAntiga);
                 posicao.setPeca(this);
-                System.out.println("posição nova"+posicao);
-                System.out.println("antiga "+posicaoAntigaPeca);
-                System.out.println("peça ataul "+antigaPeca);
+                System.out.println("peça "+posicao.getPeca());
+                System.out.println("antiga "+posicaoAntiga);
 
                 //removendo a peca da posicao anterior
+                System.out.println("this "+this.posicao);
+                System.out.println("this "+this.posicao.getPeca());
                 this.posicao.setPeca(null);
-                System.out.println("posição nova"+this.posicao);
-                System.out.println("antiga "+posicaoAntigaPeca);
-                System.out.println("peça ataul "+antigaPeca);
-//                if(){
-//
-//                }
+
                 //trocando a posicao atual da peca no tabuleiro
+                System.out.println("this "+this.posicao);
+                System.out.println("this "+this.posicao.getPeca());
+                System.out.println("this "+pecaAtualAntiga);
+
                 this.posicao=posicao;
+                System.out.println("this "+this.posicao);
+                System.out.println("this "+this.posicao.getPeca());
+                System.out.println("this "+pecaAtualAntiga);
+
+
+                if(Executavel.verificaReiEmXeque(adversario).size()!=0){
+
+                    posicao=posicaoAntiga;
+                    posicao.setPeca(pecaAntiga);
+
+                    //removendo a peca da posicao anterior
+                    this.posicao.setPeca(pecaAtualAntiga);
+
+                    //trocando a posicao atual da peca no tabuleiro
+                    this.posicao=posicaoAtualAntiga;
+                }
+
                 return true;
+
             }
         }
             return false;

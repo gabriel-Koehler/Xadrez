@@ -79,29 +79,31 @@ public class Executavel {
         }
         System.out.println(jogador.getPecas() + "\n");
         mostrarTabuleiro();
-        for (Peca peca : jogador.getPecas()) {
-            System.out.println(jogador.getPecas().indexOf(peca) + (1) + " " + peca);
-        }
-        System.out.println("Escolha Uma Peça: ");
-        int escolhaPeca = sc.nextInt();
-        System.out.println(escolhaPeca);
-        Peca peca = jogador.getPecas().get(escolhaPeca - 1);
-        System.out.println(peca);
-        //escolha da posicao para movimento
-        ArrayList<Posicao> posicoes = peca.possiveisMovimentos(tabuleiro);
-        if(posicoes.size()!=0){
-        System.out.println(posicoes);
-        int escolhaPosicao = sc.nextInt();
-        Posicao posicao = posicoes.get(escolhaPosicao-1);
-        // Movimentos da peca esccolhida para posicao desejada
-        jogador.moverPeca(peca, posicao, tabuleiro, adversario);
+        do {
+            for (Peca peca : jogador.getPecas()) {
+                System.out.println(jogador.getPecas().indexOf(peca) + (1) + " " + peca);
+            }
+            System.out.println("Escolha Uma Peça: ");
+            int escolhaPeca = sc.nextInt();
+            System.out.println(escolhaPeca);
+            Peca peca = jogador.getPecas().get(escolhaPeca - 1);
+            System.out.println(peca);
+            //escolha da posicao para movimento
+            ArrayList<Posicao> posicoes = peca.possiveisMovimentos(tabuleiro);
+            if (posicoes.size() != 0) {
+                System.out.println(posicoes);
+                int escolhaPosicao = sc.nextInt();
+                Posicao posicao = posicoes.get(escolhaPosicao - 1);
+                // Movimentos da peca esccolhida para posicao desejada
+                jogador.moverPeca(peca, posicao, tabuleiro, adversario);
 
-        return false;
+                return false;
 
-        }else {
-            System.out.println("Infelizmente essa peça não possui movimentos");
-            return true;
-        }
+            } else {
+                System.out.println("Infelizmente essa peça não possui movimentos");
+                return true;
+            }
+        }while (verificaReiEmXeque(adversario).size()!=0);
     }
     public static ArrayList<Peca> verificaReiEmXeque(Jogador adversario){
         ArrayList<Peca> pecaAtacandoRei=new ArrayList();
