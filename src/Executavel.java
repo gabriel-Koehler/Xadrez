@@ -54,15 +54,15 @@ public class Executavel {
             || tabuleiro.getPosicoes().indexOf(posicao)==55
             || tabuleiro.getPosicoes().indexOf(posicao)==63){
                 if(posicao.getPeca()!=null){
-                    System.out.print("|"+posicao.getPeca()+"| \n");
+                    System.out.print("["+posicao.getPeca()+"] \n");
                 }else {
-                    System.out.print("|"+"⬛"+"| \n");
+                    System.out.print("["+"➕"+"] \n");
                 }
             }else {
                 if(posicao.getPeca()!=null){
-                    System.out.print("|"+posicao.getPeca()+"|");
+                    System.out.print("["+posicao.getPeca()+"]");
                 }else{
-                    System.out.print("|"+"⬛"+"|");
+                    System.out.print("["+"➕"+"]");
                 }
             }
 
@@ -70,6 +70,13 @@ public class Executavel {
     }
 
     private static boolean displayJogada(Jogador jogador,Jogador adversario){
+        if(verificaReiEmXeque(adversario).size()!=0){
+                System.out.println("As peças que estão atacando: ");
+            for (Peca peca:
+                    verificaReiEmXeque(adversario)) {
+                System.out.println(peca);
+            }
+        }
         System.out.println(jogador.getPecas() + "\n");
         mostrarTabuleiro();
         for (Peca peca : jogador.getPecas()) {
@@ -88,10 +95,23 @@ public class Executavel {
         Posicao posicao = posicoes.get(escolhaPosicao-1);
         // Movimentos da peca esccolhida para posicao desejada
         jogador.moverPeca(peca, posicao, tabuleiro, adversario);
+
         return false;
+
         }else {
             System.out.println("Infelizmente essa peça não possui movimentos");
             return true;
         }
+    }
+    public static ArrayList<Peca> verificaReiEmXeque(Jogador adversario){
+        ArrayList<Peca> pecaAtacandoRei=new ArrayList();
+        for (Peca peca: adversario.getPecas()) {
+            for (Posicao posicao:peca.possiveisMovimentos(tabuleiro)) {
+                if(posicao.getPeca()!=null && posicao.getPeca() instanceof Rei){
+                    pecaAtacandoRei.add(peca);
+                }
+            }
+        }
+        return pecaAtacandoRei;
     }
 }

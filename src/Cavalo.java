@@ -26,7 +26,7 @@ public class Cavalo extends Peca {
                     indice== posicaoNoTabuleiro+10 ||
                     indice== posicaoNoTabuleiro+15 ||
                     indice== posicaoNoTabuleiro+17 ){
-                System.out.println(indice);
+
                 //                coluna A
                 if (this.validaExtremidade(posicaoNoTabuleiro)){
                     if(!(
@@ -36,7 +36,6 @@ public class Cavalo extends Peca {
                         indice==posicaoNoTabuleiro-17
                         )
                     ){
-                        System.out.println(indice+"A");
                         verificaPeca(posicao,possiveisMovimentos);
                     }
 
@@ -50,7 +49,7 @@ public class Cavalo extends Peca {
                             indice==posicaoNoTabuleiro+10||
                             indice==posicaoNoTabuleiro-6
                     ){
-                        System.out.println(indice+"B");
+
                         verificaPeca(posicao,possiveisMovimentos);
                     }
                 }
@@ -62,7 +61,7 @@ public class Cavalo extends Peca {
                             indice==posicaoNoTabuleiro-17||
                             indice==posicaoNoTabuleiro-10||
                             indice==posicaoNoTabuleiro+6){
-                        System.out.println(indice+"G");
+
                         verificaPeca(posicao,possiveisMovimentos);
                      }
                 }
@@ -75,11 +74,11 @@ public class Cavalo extends Peca {
                             indice==posicaoNoTabuleiro-15
                         )
                     ){
-                        System.out.println(indice+"H");
+
                         verificaPeca(posicao,possiveisMovimentos);
                     }
                 }else {
-                        System.out.println(indice+"any");
+
                         verificaPeca(posicao,possiveisMovimentos);
                 }
 

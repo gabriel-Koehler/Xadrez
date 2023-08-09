@@ -23,12 +23,26 @@ public abstract class Peca {
     public boolean mover(Tabuleiro tabuleiro,
                       Posicao posicao){
         ArrayList<Posicao> possiveisPosicoes = possiveisMovimentos(tabuleiro);
+        Posicao posicaoAntigaPeca=posicao;
+        Posicao antigaPeca=this.posicao;
         for (Posicao possicaoPossivel: possiveisPosicoes) {
             if(possicaoPossivel==posicao){
                 //atribuindo a peca para a nova posicao no tabuleiro
+                System.out.println("antiga "+posicaoAntigaPeca);
+                System.out.println("peça ataul "+antigaPeca);
                 posicao.setPeca(this);
+                System.out.println("posição nova"+posicao);
+                System.out.println("antiga "+posicaoAntigaPeca);
+                System.out.println("peça ataul "+antigaPeca);
+
                 //removendo a peca da posicao anterior
                 this.posicao.setPeca(null);
+                System.out.println("posição nova"+this.posicao);
+                System.out.println("antiga "+posicaoAntigaPeca);
+                System.out.println("peça ataul "+antigaPeca);
+//                if(){
+//
+//                }
                 //trocando a posicao atual da peca no tabuleiro
                 this.posicao=posicao;
                 return true;
