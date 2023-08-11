@@ -42,7 +42,7 @@ public class Jogador {
 
 
 
-        if(peca instanceof Peao){
+        if(peca instanceof Peao && valida){
             if(((Peao) peca).isPrimeiroMovimento()){
                 ((Peao) peca).setPrimeiroMovimento(false);
             }

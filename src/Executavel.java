@@ -77,9 +77,9 @@ public class Executavel {
                 System.out.println(peca);
             }
         }
+        do {
         System.out.println(jogador.getPecas() + "\n");
         mostrarTabuleiro();
-        do {
             for (Peca peca : jogador.getPecas()) {
                 System.out.println(jogador.getPecas().indexOf(peca) + (1) + " " + peca);
             }
@@ -97,13 +97,13 @@ public class Executavel {
                 // Movimentos da peca esccolhida para posicao desejada
                 jogador.moverPeca(peca, posicao, tabuleiro, adversario);
 
-                return false;
 
             } else {
                 System.out.println("Infelizmente essa peça não possui movimentos");
                 return true;
             }
         }while (verificaReiEmXeque(adversario).size()!=0);
+        return false;
     }
     public static ArrayList<Peca> verificaReiEmXeque(Jogador adversario){
         ArrayList<Peca> pecaAtacandoRei=new ArrayList();
