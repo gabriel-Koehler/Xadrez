@@ -106,13 +106,29 @@ public class Executavel {
         return false;
     }
     public static ArrayList<Peca> verificaReiEmXeque(Jogador adversario){
+        Peca rei=null;
         ArrayList<Peca> pecaAtacandoRei=new ArrayList();
         for (Peca peca: adversario.getPecas()) {
             for (Posicao posicao:peca.possiveisMovimentos(tabuleiro)) {
                 if(posicao.getPeca()!=null && posicao.getPeca() instanceof Rei){
+                    rei=posicao.getPeca();
                     pecaAtacandoRei.add(peca);
                 }
             }
+        }
+        if(pecaAtacandoRei.size()!=0){
+            ArrayList posicaoFuga=new ArrayList();
+            for (Posicao posicao:rei.possiveisMovimentos(tabuleiro)) {
+                for (Peca peca: adversario.getPecas()) {
+                    for (Posicao posicao2:peca.possiveisMovimentos(tabuleiro)) {
+                        if (posicao == posicao2){
+                            posicaoFuga.add()
+                        }
+                    }
+                }
+            }
+
+
         }
         return pecaAtacandoRei;
     }
