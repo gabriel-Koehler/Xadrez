@@ -71,6 +71,7 @@ public class Executavel {
     }
 
     private static boolean displayJogada(Jogador jogador,Jogador adversario){
+        cheque_Mate(adversario,jogador);
         if(verificaReiEmXeque(adversario,jogador).size()!=0){
                 System.out.println("As peças que estão atacando: ");
             for (Peca peca:
@@ -108,34 +109,56 @@ public class Executavel {
     }
 
     public static ArrayList<Peca> verificaReiEmXeque(Jogador adversario,Jogador atuando){
-        Peca rei=null;
+
         ArrayList<Peca> pecaAtacandoRei=new ArrayList();
         for (Peca peca: adversario.getPecas()) {
             for (Posicao posicao:peca.possiveisMovimentos(tabuleiro)) {
                 if(posicao.getPeca()!=null && posicao.getPeca() instanceof Rei){
-                    rei=posicao.getPeca();
                     pecaAtacandoRei.add(peca);
                 }
             }
         }
-        if(pecaAtacandoRei.size()!=0){
+
+        return pecaAtacandoRei;
+
+    }
+
+    private static void cheque_Mate(Jogador adversario,Jogador atuando){
+        ArrayList temJogadas=new ArrayList();
+        if(verificaReiEmXeque(adversario,atuando).size()!=0){
+            Peca rei=null;
+            for (Peca peca:atuando.getPecas()){
+                if (peca instanceof  Rei){
+                    rei=peca;
+                }
+            }
             ArrayList posicaoFuga=new ArrayList();
             for (Posicao posicao:rei.possiveisMovimentos(tabuleiro)) {
                 for (Peca peca: adversario.getPecas()) {
                     for (Posicao posicao2:peca.possiveisMovimentos(tabuleiro)) {
                         if (posicao == posicao2){
-                            System.out.println(posicao);
+                            System.out.println("posicaoFuga"+posicao);
                             posicaoFuga.add(posicao);
                         }
                     }
                 }
             }
-            if(rei.possiveisMovimentos(tabuleiro).size()==posicaoFuga.size()){
+
+            for (Peca peca:atuando.getPecas()){
+                for (Posicao posicao:peca.possiveisMovimentos(tabuleiro)){
+                    if (peca.simulacao(posicao,adversario,atuando)){
+                        System.out.println("temJogadas"+posicao);
+                        temJogadas.add(posicao);
+                    }
+                }
+            }
+
+            if(rei.possiveisMovimentos(tabuleiro).size()==posicaoFuga.size() && temJogadas.size()==0){
                 atuando.getPecas().remove(rei);
                 System.out.println("sim");
             }
         }
-        return pecaAtacandoRei;
     }
+
 
 }

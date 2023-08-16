@@ -61,7 +61,5 @@ public class Jogador {
         return pecas;
     }
 
-    public void desistir(){
 
-    }
 }
