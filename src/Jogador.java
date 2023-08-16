@@ -38,7 +38,7 @@ public class Jogador {
                              Jogador adversario){
 
         Peca pecaAdversaria=posicao.getPeca();
-        boolean valida=peca.mover(tabuleiro,posicao,adversario);
+        boolean valida=peca.mover(tabuleiro,posicao,adversario,this);
 
 
 

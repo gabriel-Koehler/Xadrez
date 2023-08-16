@@ -42,6 +42,7 @@ public class Executavel {
         }
         return x==y;
     }
+
     private static void mostrarTabuleiro(){
         for (Posicao posicao: tabuleiro.getPosicoes() ) {
 
@@ -70,10 +71,10 @@ public class Executavel {
     }
 
     private static boolean displayJogada(Jogador jogador,Jogador adversario){
-        if(verificaReiEmXeque(adversario).size()!=0){
+        if(verificaReiEmXeque(adversario,jogador).size()!=0){
                 System.out.println("As peças que estão atacando: ");
             for (Peca peca:
-                    verificaReiEmXeque(adversario)) {
+                    verificaReiEmXeque(adversario,jogador)) {
                 System.out.println(peca);
             }
         }
@@ -94,18 +95,19 @@ public class Executavel {
                 System.out.println(posicoes);
                 int escolhaPosicao = sc.nextInt();
                 Posicao posicao = posicoes.get(escolhaPosicao - 1);
+
                 // Movimentos da peca esccolhida para posicao desejada
                 jogador.moverPeca(peca, posicao, tabuleiro, adversario);
-
 
             } else {
                 System.out.println("Infelizmente essa peça não possui movimentos");
                 return true;
             }
-        }while (verificaReiEmXeque(adversario).size()!=0);
+        }while (verificaReiEmXeque(adversario,jogador).size()!=0);
         return false;
     }
-    public static ArrayList<Peca> verificaReiEmXeque(Jogador adversario){
+
+    public static ArrayList<Peca> verificaReiEmXeque(Jogador adversario,Jogador atuando){
         Peca rei=null;
         ArrayList<Peca> pecaAtacandoRei=new ArrayList();
         for (Peca peca: adversario.getPecas()) {
@@ -122,14 +124,18 @@ public class Executavel {
                 for (Peca peca: adversario.getPecas()) {
                     for (Posicao posicao2:peca.possiveisMovimentos(tabuleiro)) {
                         if (posicao == posicao2){
-                            posicaoFuga.add()
+                            System.out.println(posicao);
+                            posicaoFuga.add(posicao);
                         }
                     }
                 }
             }
-
-
+            if(rei.possiveisMovimentos(tabuleiro).size()==posicaoFuga.size()){
+                atuando.getPecas().remove(rei);
+                System.out.println("sim");
+            }
         }
         return pecaAtacandoRei;
     }
+
 }

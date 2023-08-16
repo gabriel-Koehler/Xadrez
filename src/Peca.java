@@ -22,7 +22,7 @@ public abstract class Peca {
     }
 
     public boolean mover(Tabuleiro tabuleiro,
-                      Posicao posicao,Jogador adversario){
+                      Posicao posicao,Jogador adversario,Jogador jogador){
         boolean x;
         boolean y;
 
@@ -32,8 +32,6 @@ public abstract class Peca {
         Peca pecaAntiga=posicao.getPeca();
         Peca pecaAtualAntiga=this.posicao.getPeca();
 
-        for (Posicao possicaoPossivel: possiveisPosicoes) {
-            if(possicaoPossivel==posicao){
 
                 //atribuindo a peca para a nova posicao no tabuleiro
 //                System.out.println("peça antiga "+pecaAntiga);
@@ -59,41 +57,22 @@ public abstract class Peca {
 //                System.out.println("this "+this.posicao);
 //                System.out.println("this "+this.posicao.getPeca());
 //                System.out.println("this "+pecaAtualAntiga);
-                System.out.println(posicao);
-                System.out.println(posicao.getPeca());
-                System.out.println(this.posicao);
-                System.out.println(this.posicao.getPeca());
 
-                if(Executavel.verificaReiEmXeque(adversario).size()!=0){
-                    System.out.println("simulação");
-                    System.out.println( this.posicao);
-                    System.out.println( this.posicao.getPeca());
+                if(Executavel.verificaReiEmXeque(adversario,jogador).size()!=0){
+
                     this.posicao=posicaoAtualAntiga;
                     this.posicao.setPeca(pecaAtualAntiga);
-                    System.out.println( this.posicao);
-                    System.out.println( this.posicao.getPeca());
-                    System.out.println(posicao);
-                    System.out.println(posicao.getPeca());
+
                     posicao=posicaoAntiga;
                     posicao.setPeca(pecaAntiga);
-                    System.out.println(posicao);
-                    System.out.println(posicao.getPeca());
-                    System.out.println(posicao);
-                    System.out.println(posicao.getPeca());
+
                     //removendo a peca da posicao anterior
 
-                    //trocando a posicao atual da peca no tabuleiro
-//                    this.posicao=posicaoAtualAntiga;
-//                    System.out.println(this.posicao);
-//                    System.out.println(this.posicao.getPeca());
                     return false;
                 }
 
                 return true;
 
-            }
-        }
-            return false;
     }
 
     public boolean validaExtremidade(int posicaoNoTabuleiro){
