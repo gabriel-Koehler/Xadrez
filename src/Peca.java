@@ -23,32 +23,19 @@ public abstract class Peca {
 
     public boolean mover(Tabuleiro tabuleiro,
                       Posicao posicao,Jogador adversario,Jogador jogador){
-
+        System.out.println(simulacao(posicao,adversario,jogador));
         if(simulacao(posicao,adversario,jogador)){
-            //atribuindo a peca para a nova posicao no tabuleiro
-//                System.out.println("peça antiga "+pecaAntiga);
-//                System.out.println("posição antiga "+posicaoAntiga);
+
             if (posicao.getPeca() != null) {
                 adversario.getPecas().remove(posicao.getPeca());
             }
             posicao.setPeca(this);
-//                System.out.println("peça "+posicao.getPeca());
-//                System.out.println("antiga "+posicaoAntiga);
 
-            //removendo a peca da posicao anterior
-//                System.out.println("this "+this.posicao);
-//                System.out.println("this "+this.posicao.getPeca());
             this.posicao.setPeca(null);
 
-            //trocando a posicao atual da peca no tabuleiro
-//                System.out.println("this "+this.posicao);
-//                System.out.println("this "+this.posicao.getPeca());
-//                System.out.println("this "+pecaAtualAntiga);
 
             this.posicao = posicao;
-//                System.out.println("this "+this.posicao);
-//                System.out.println("this "+this.posicao.getPeca());
-//                System.out.println("this "+pecaAtualAntiga);
+
         }
 
                 return true;
@@ -70,40 +57,28 @@ public abstract class Peca {
     }
     //icone
     public boolean simulacao( Posicao posicao,Jogador adversario,Jogador jogador){
-        if (Executavel.verificaReiEmXeque(adversario, jogador).size()!=0){
+
             Posicao posicaoAntiga = posicao;
             Posicao posicaoAtualAntiga = this.posicao;
             Peca pecaAntiga = posicao.getPeca();
             Peca pecaAtualAntiga = this.posicao.getPeca();
-
-
-            //atribuindo a peca para a nova posicao no tabuleiro
-//                System.out.println("peça antiga "+pecaAntiga);
-//                System.out.println("posição antiga "+posicaoAntiga);
+            System.out.println(pecaAntiga+
+                            "\n" +pecaAtualAntiga+
+                            "\n" +posicaoAntiga+
+                            "\n" +posicaoAtualAntiga);
             if (posicao.getPeca() != null) {
                 adversario.getPecas().remove(posicao.getPeca());
             }
             posicao.setPeca(this);
-//                System.out.println("peça "+posicao.getPeca());
-//                System.out.println("antiga "+posicaoAntiga);
 
-            //removendo a peca da posicao anterior
-//                System.out.println("this "+this.posicao);
-//                System.out.println("this "+this.posicao.getPeca());
             this.posicao.setPeca(null);
 
-            //trocando a posicao atual da peca no tabuleiro
-//                System.out.println("this "+this.posicao);
-//                System.out.println("this "+this.posicao.getPeca());
-//                System.out.println("this "+pecaAtualAntiga);
 
             this.posicao = posicao;
-//                System.out.println("this "+this.posicao);
-//                System.out.println("this "+this.posicao.getPeca());
-//                System.out.println("this "+pecaAtualAntiga);
 
             if (Executavel.verificaReiEmXeque(adversario, jogador).size() != 0) {
                 System.out.println("ainda cheque");
+                System.out.println(posicao.getPeca()!=null? posicao.getPeca():"");
                 this.posicao = posicaoAtualAntiga;
                 this.posicao.setPeca(pecaAtualAntiga);
 
@@ -120,8 +95,9 @@ public abstract class Peca {
 
             posicao = posicaoAntiga;
             posicao.setPeca(pecaAntiga);
-        }
+
         System.out.println("não cheque");
+        System.out.println(posicao.getPeca()!=null? posicao.getPeca():"");
         return true;
     }
 

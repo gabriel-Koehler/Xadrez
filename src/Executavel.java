@@ -144,21 +144,23 @@ public class Executavel {
                 }
             }
 
-            for (Peca peca:atuando.getPecas()){
-                for (Posicao posicao:peca.possiveisMovimentos(tabuleiro)){
-                    if (peca.simulacao(posicao,adversario,atuando)){
-                        System.out.println("temJogadas"+posicao);
-                        temJogadas.add(posicao);
-                    }
-                }
-            }
+//            for (Peca peca:atuando.getPecas()){
+//                System.out.println(peca);
+//                for (Posicao posicao:peca.possiveisMovimentos(tabuleiro)){
+//                    System.out.println(posicao);
+//                    if (!peca.simulacao(posicao,adversario,atuando)){
+//                        System.out.println("temJogadas"+posicao);
+//                        temJogadas.add(posicao);
+//                    }
+//                }
+//            }
 
-            if(rei.possiveisMovimentos(tabuleiro).size()==posicaoFuga.size() && temJogadas.size()==0){
+            if(rei.possiveisMovimentos(tabuleiro).size()==posicaoFuga.size() && verificaReiEmXeque(adversario,atuando).size()==0){
                 atuando.getPecas().remove(rei);
                 System.out.println("sim");
             }
         }
     }
-
+//posso colocar verificaCheque, e verificar dentro desse if ^ acima
 
 }
